@@ -1,174 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Kids Course</title>
-  <style>
-    body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #fff8e7;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-    header {
-      background-color: #ffcb69;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      border-bottom: 5px solid #f9a826;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-    header img {
-      height: 70px;
-      width: auto;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      background-color: white;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Kids Course</title>
+<style>
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to bottom, #fff8e7, #ffe8d6);
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #ffcb69, #f77f00);
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  header img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: transform 0.5s;
+    background: white;
+  }
+  header img:hover {
+    transform: rotate(10deg) scale(1.1);
+  }
+  header h1 {
+    font-size: 2.2em;
+    margin-bottom: 5px;
+  }
+
+  /* Navigation */
+  nav {
+    background-color: #f77f00;
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 20px;
+    background-color: #fcbf49;
+    margin: 5px;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+  nav a:hover {
+    background-color: #e36414;
+    transform: scale(1.1);
+  }
+
+  /* Section Titles */
+  h2 {
+    color: #f77f00;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+  }
+  .gallery img {
+    width: 100%;
+    border-radius: 15px;
+    border: 3px solid #fcbf49;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+  }
+
+  /* Info Boxes */
+  .box {
+    background-color: #fffdf5;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border: 2px solid #fcbf49;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .box:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Contact */
+  .contact {
+    text-align: center;
+    background-color: #fcefb4;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #fcbf49;
+  }
+  button {
+    background-color: #f77f00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  button:hover {
+    background-color: #e36414;
+    transform: scale(1.05);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    background-color: #ffcb69;
+    padding: 10px;
+    font-size: 0.9em;
+    margin-top: 20px;
+    border-top: 5px solid #f9a826;
+  }
+
+  /* Responsive Text Sizes */
+  @media (max-width: 600px) {
     header h1 {
-      font-size: 2.5em;
-      margin: 0;
-    }
-    nav {
-      background-color: #f77f00;
-      text-align: center;
-      padding: 10px;
+      font-size: 1.8em;
     }
     nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      display: inline-block;
-      border-radius: 20px;
-      background-color: #fcbf49;
-      margin: 5px;
-      font-weight: bold;
-      transition: background-color 0.3s;
+      padding: 8px 12px;
     }
-    nav a:hover {
-      background-color: #e36414;
-    }
-    section {
-      padding: 20px;
-    }
-    h2 {
-      color: #f77f00;
-      text-align: center;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 15px;
-      border: 3px solid #fcbf49;
-    }
-    .classes, .payment {
-      background-color: #ffe8d6;
-      border-radius: 15px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 800px;
-      border: 2px solid #fcbf49;
-    }
-    footer {
-      text-align: center;
-      background-color: #ffcb69;
-      padding: 10px;
-      font-size: 0.9em;
-      margin-top: 20px;
-      border-top: 5px solid #f9a826;
-    }
-    .contact {
-      text-align: center;
-      padding: 20px;
-      background-color: #fcefb4;
-      border-radius: 15px;
-      max-width: 800px;
-      margin: auto;
-      border: 2px solid #fcbf49;
-    }
-    button {
-      background-color: #f77f00;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    button:hover {
-      background-color: #e36414;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <img src="logo.png" alt="Happy Kids Logo">
-    <div>
-      <h1>Happy Kids Course</h1>
-      <p>Fun Learning for Bright Futures!</p>
-    </div>
-  </header>
+<header>
+  <img src="logo.png" alt="Happy Kids Logo">
+  <div>
+    <h1>Happy Kids Course</h1>
+    <p>Fun Learning for Bright Futures!</p>
+  </div>
+</header>
 
-  <nav>
-    <a href="#photos">Photos</a>
-    <a href="#classes">Classes</a>
-    <a href="#payment">Payment</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
+<nav>
+  <a href="#photos">Photos</a>
+  <a href="#classes">Classes</a>
+  <a href="#payment">Payment</a>
+  <a href="#contact">Contact Us</a>
+</nav>
 
-  <section id="photos">
-    <h2>📸 Course Activities</h2>
-    <div class="gallery">
-      <img src="photo1.jpg" alt="Kids learning art">
-      <img src="photo2.jpg" alt="Kids doing science experiment">
-      <img src="photo3.jpg" alt="Outdoor activities">
-      <img src="photo4.jpg" alt="Music class">
-    </div>
-  </section>
+<section id="photos">
+  <h2>📸 Course Activities</h2>
+  <div class="gallery">
+    <img src="photo1.jpg" alt="Kids learning art">
+    <img src="photo2.jpg" alt="Kids doing science experiment">
+    <img src="photo3.jpg" alt="Outdoor activities">
+    <img src="photo4.jpg" alt="Music class">
+  </div>
+</section>
 
-  <section id="classes" class="classes">
-    <h2>📚 Our Classes</h2>
-    <ul>
-      <li>🎨 Art & Craft</li>
-      <li>🔬 Science for Kids</li>
-      <li>🎵 Music & Dance</li>
-      <li>🌍 Language & Culture</li>
-    </ul>
-  </section>
+<section id="classes" class="box">
+  <h2>📚 Our Classes</h2>
+  <ul>
+    <li>🎨 Art & Craft</li>
+    <li>🔬 Science for Kids</li>
+    <li>🎵 Music & Dance</li>
+    <li>🌍 Language & Culture</li>
+  </ul>
+</section>
 
-  <section id="payment" class="payment">
-    <h2>💰 Payment Terms</h2>
-    <p>We offer flexible payment options to make learning accessible for everyone:</p>
-    <ul>
-      <li>Monthly subscription</li>
-      <li>Discount for quarterly payments</li>
-      <li>Sibling discount available</li>
-    </ul>
-  </section>
+<section id="payment" class="box">
+  <h2>💰 Payment Terms</h2>
+  <p>We offer flexible payment options to make learning accessible for everyone:</p>
+  <ul>
+    <li>Monthly subscription</li>
+    <li>Discount for quarterly payments</li>
+    <li>Sibling discount available</li>
+  </ul>
+</section>
 
-  <section id="contact" class="contact">
-    <h2>📞 Contact Us</h2>
-    <p>Email: <a href="mailto:info@happykidscourse.com">info@happykidscourse.com</a></p>
-    <p>Phone: +62 812 3456 7890</p>
-    <p>Address: Jl. Bahagia No. 123, Jakarta</p>
-    <button onclick="window.location.href='mailto:info@happykidscourse.com'">Send Email</button>
-  </section>
+<section id="contact" class="contact">
+  <h2>📞 Contact Us</h2>
+  <p>Email: <a href="mailto:info@happykidscourse.com">info@happykidscourse.com</a></p>
+  <p>Phone: +62 812 3456 7890</p>
+  <p>Address: Jl. Bahagia No. 123, Jakarta</p>
+  <button onclick="window.location.href='mailto:info@happykidscourse.com'">Send Email</button>
+</section>
 
-  <footer>
-    &copy; 2025 Happy Kids Course | Learning with Joy!
-  </footer>
+<footer>
+  &copy; 2025 Happy Kids Course | Learning with Joy!
+</footer>
 
 </body>
 </html>
